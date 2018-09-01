@@ -1,0 +1,12 @@
+# Useful terraform commands (keep adding)
+
+terraform plan -var-file ../terraform.tfvars
+terraform apply -var-file ..\terraform.tfvars
+
+terraform refresh
+terraform show
+terraform validate
+
+terraform apply ..\build-plan
+terraform apply ..\destroy-plan
+

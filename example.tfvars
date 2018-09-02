@@ -1,0 +1,1 @@
+zones = ["eu-west-2c", "eu-west-2b"]

@@ -77,15 +77,19 @@ resource "aws_instance" "central-backend" {
 }
 
 # OUTPUT
-output "frontend_ip" {
-  description = "List of public IP addresses assigned to the instances"
-  value = "${aws_instance.west-frontend.*.public_ip}"
-  value = "${aws_instance.central-frontend.*.public_ip}"
+output "west-frontend_ip" {
+  value = "${aws_instance.west-frontend.*.public_ip}" 
 }
 
-output "backend_ips" {
-  description = "List of public IP addresses assigned to the instances"
-  value = "${aws_instance.west-backend.*.public_ip}"
+output "central-frontend_ip" {
+    value = "${aws_instance.central-frontend.*.public_ip}"
+}
+
+output "west-backend_ips" {
+  value = "${aws_instance.west-backend.*.public_ip}"  
+}
+
+output "central-backend_ips" {
   value = "${aws_instance.central-backend.*.public_ip}"
 }
 

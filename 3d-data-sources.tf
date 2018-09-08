@@ -1,4 +1,4 @@
-### 3c-locals.tf
+### 3d-data-sources.tf
 
 ### VARIABLES ###
 
@@ -21,6 +21,17 @@ variable "multi-region-deployment" {
 
 variable "environment-name" {
   default = "Terraform-demo"
+}
+
+
+### DATA SOURCES ###
+
+data "aws_availability_zones" "eu-west-2" {
+  provider = "aws.eu-west-2"
+}
+
+data "aws_availability_zones" "eu-west-3" {
+  provider = "aws.eu-west-3"
 }
 
 
@@ -58,7 +69,7 @@ resource "aws_instance" "west2-frontend" {
   }
 	
   depends_on            = ["aws_instance.west2-backend"]
-  availability_zone     = "${var.eu-west2-zones[count.index]}"
+  availability_zone     = "${data.aws_availability_zones.eu-west-2.names[count.index]}"
   provider              = "aws.eu-west-2"
   ami                   = "ami-f976839e"
   instance_type         = "t2.micro"  
@@ -69,10 +80,10 @@ resource "aws_instance" "west3-frontend" {
   tags = {
     Name = "${local.default_frontend_name}"
   }
-	
-  count                 = "${var.multi-region-deployment ? 1 : 0}"
+
+  count             	= "${var.multi-region-deployment ? 1 : 0}"
   depends_on            = ["aws_instance.west3-backend"]
-  availability_zone     = "${var.eu-west3-zones[count.index]}"
+  availability_zone     = "${data.aws_availability_zones.eu-west-3.names[count.index]}"
   provider              = "aws.eu-west-3"
   ami                   = "ami-0ebc281c20e89ba4b"
   instance_type         = "t2.micro" 
@@ -86,7 +97,7 @@ resource "aws_instance" "west2-backend" {
   }
 	
   count                 = 2
-  availability_zone     = "${var.eu-west2-zones[count.index]}"
+  availability_zone     = "${data.aws_availability_zones.eu-west-2.names[count.index]}"
   provider              = "aws.eu-west-2"
   ami                   = "ami-f976839e"
   instance_type         = "t2.micro"
@@ -99,7 +110,7 @@ resource "aws_instance" "west3-backend" {
   }
 
   count                 = "${var.multi-region-deployment ? 2 : 0}"
-  availability_zone     = "${var.eu-west3-zones[count.index]}"
+  availability_zone     = "${data.aws_availability_zones.eu-west-3.names[count.index]}"
   provider              = "aws.eu-west-3"
   ami                   = "ami-0ebc281c20e89ba4b"
   instance_type         = "t2.micro"  

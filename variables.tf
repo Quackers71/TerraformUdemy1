@@ -2,7 +2,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
 variable "key_name" {
-  default = "QBorBoxKey"
+  default = "QEC2DPC"
 }
 
 variable "private_key_path" {}

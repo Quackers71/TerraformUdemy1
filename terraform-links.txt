@@ -1,0 +1,9 @@
+Terraform Related Links
+
+https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/1.43.0
+
+https://github.com/terraform-aws-modules/terraform-aws-vpc/blob/master/main.tf
+
+https://github.com/LevelUpEducation/terraform-tutorial/blob/master/4b_Vpcs/vpc.tf
+
+

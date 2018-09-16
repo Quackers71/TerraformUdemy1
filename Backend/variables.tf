@@ -14,3 +14,11 @@ variable "eu-west-zones" {
 variable "sg-id" {
   default = "sg-3198445a"
 }
+
+variable "number_instances" {
+  default = "1"
+}
+
+variable "region" {
+  default = "eu-west-2"
+}

@@ -48,5 +48,38 @@ Some things to try next:
 * Run `gcloud --help` to see the Cloud Platform services you can interact with. And run `gcloud help COMMAND` to get help on any gcloud command.
 * Run `gcloud topic -h` to learn about advanced features of the SDK like arg files and output formatting
 
+gcloud components install kubectl
+
+# kubes commands
+
+kubectl get pods
+
+kubectl get nodes
+
+# NAME                                                  STATUS    ROLES     AGE       VERSION
+// gke-robq-terraform-d-robq-terraform-d-49248f6a-mqss   Ready     <none>    12m       v1.10.7-gke.1
+// gke-robq-terraform-d-robq-terraform-d-b681f26e-zd0h   Ready     <none>    19m       v1.10.7-gke.1
+// gke-robq-terraform-d-robq-terraform-d-c9057768-gnzw   Ready     <none>    16m       v1.10.7-gke.1
+
+# 5e_First_Kube_app - Builds the plugin required for the implementation of the Application...
+
+https://github.com/sl1pm4t/terraform-provider-kubernetes
+
+mkdir -p /c/Go/src/github.com/sl1pm4t; cd /c/Go/src/github.com/sl1pm4t
+git clone https://github.com/sl1pm4t/terraform-provider-kubernetes
+cd /c/Go/src/github.com/sl1pm4t/terraform-provider-kubernetes
+
+https://superuser.com/questions/701141/how-to-add-more-commands-to-git-bash
+
+Go to ezwinports.
+Download make-4.1-2-without-guile-w32-bin.zip (get the version without guile).
+Extract zip.
+Copy the contents to your Git\mingw64\ merging the folders, but do NOT overwrite/replace any existing files.
+
+make fmt
+make build
+
+terraform init -plugin-dir=$GOPATH/bin
+
 
 
